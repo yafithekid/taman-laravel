@@ -19,15 +19,23 @@ class PengaduanController extends BaseController {
 		}
 	}
 
-	public function getIndex()
+	public function anyIndex()
 	{
 		$models = Pengaduan::all();
-		return View::make('pengaduan.index',['models'=>$model]);
+		return View::make('pengaduan.index',['models'=>$models]);
 	}
 
 	public function anyView($id)
 	{
 		$model = Pengaduan::findOrFail($id);
 		return View::make('pengaduan.view',['model'=>$model]);
+	}
+
+	public function anyVerifikasi($id)
+	{
+		$model = Pengaduan::findOrFail($id);
+		$model->verified = !$model->verified;
+		$model->save();
+		return Redirect::route('pengaduan.index');
 	}
 }

@@ -21,4 +21,6 @@ Route::group(['prefix'=>'/pengaduan'],function()
 	Route::get('/create',['uses' => 'PengaduanController@getCreate','as' => 'pengaduan.get_create']);
 	Route::post('/create',['uses' => 'PengaduanController@postCreate','as'=>'pengaduan.post_create']);
 	Route::any('/view',['uses' => 'PengaduanController@anyView','as' => 'pengaduan.view']);
+    Route::any('/index',['uses' => 'PengaduanController@anyIndex','as'=>'pengaduan.index']);
+    Route::any('/{id}/verifikasi',['uses' => 'PengaduanController@anyVerifikasi','as'=>'pengaduan.verifikasi']);
 });
