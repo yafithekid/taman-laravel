@@ -15,3 +15,10 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::group(['prefix'=>'/pengaduan'],function()
+{
+	Route::get('/create',['uses' => 'PengaduanController@getCreate','as' => 'pengaduan.get_create']);
+	Route::post('/create',['uses' => 'PengaduanController@postCreate','as'=>'pengaduan.post_create']);
+	Route::any('/view',['uses' => 'PengaduanController@anyView','as' => 'pengaduan.view']);
+});
