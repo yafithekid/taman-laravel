@@ -4,16 +4,18 @@
 		{{HTML::style('css/jquery.datetimepicker.css');}}
 	</head>
 	<body>
-		header
-		@if(Session::has('success'))
-			<div class='alert alert-success'>{{Session::get('success');}}</div>
-		@endif
-		@if(Session::has('error'))
-			<div class='alert alert-danger'>{{Session::get('error');}}</div>
-		@endif
+		@include('layouts.header')
 		
-		@yield('content')
-		
+		<div class='container' style='margin-top:50px;'>
+			@if(Session::has('success'))
+				<div class='alert alert-success'>{{Session::get('success');}}</div>
+			@endif
+			@if(Session::has('error'))
+				<div class='alert alert-danger'>{{Session::get('error');}}</div>
+			@endif
+			@yield('content')
+		</div>
+
 		footer
 
 		@section('script')

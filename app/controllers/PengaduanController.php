@@ -13,7 +13,7 @@ class PengaduanController extends BaseController {
 		$model->fill(Input::all());
 		if ($model->save()){
 			Session::flash('success','Data berhasil disimpan');
-			return Redirect::route('pengaduan.index');
+			return Redirect::route('pengaduan.view',['id'=>$id]);
 		} else {
 			return View::make('pengaduan.create',['model'=>$model,'tamans'=>Taman::all()]);
 		}
