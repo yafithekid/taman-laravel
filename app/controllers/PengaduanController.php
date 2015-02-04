@@ -12,7 +12,10 @@ class PengaduanController extends BaseController {
 		$model = new Pengaduan();
 		$model->fill(Input::all());
 		if ($model->save()){
-			Session::flash('success','Data berhasil disimpan');
+			if (Input::hasFile('file_gambar')){
+				$model->file_gambar = Input::file('file_gambar');
+				$model->saveImage();
+			}
 			return Redirect::route('pengaduan.view',['id'=>$id]);
 		} else {
 			return View::make('pengaduan.create',['model'=>$model,'tamans'=>Taman::all()]);

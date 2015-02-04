@@ -20,7 +20,6 @@ class SiteController extends BaseController {
         $password = sha1(Input::get('username'));
 
         $model = Pengguna::where('username','=',$username)->where('password','=',$password)->first();
-
         if ($model === null){
             $model = new Pengguna(); $model->username = $username;
             Session::flash('login.error','Invalid username/password');

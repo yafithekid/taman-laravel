@@ -11,8 +11,8 @@
 <label for='tanggal'>Tanggal</label>
 <input name='tanggal' type='text' value='{{$model->tanggal}}' class='form-control' id='datetimepicker'/>
 
-<label for='gambar'>Gambar</label>
-<input name='gambar' type='file' class='form-control'/>
+<label for='file_gambar'>Gambar</label>
+<input name='file_gambar' type='file' class='form-control'/>
 
 <label for='kategori'>Kategori</label>
 <input name='kategori' type='text' value='{{$model->kategori}}' class='form-control'/>

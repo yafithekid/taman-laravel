@@ -15,8 +15,20 @@ class Pengaduan extends Eloquent {
 	 */
 	protected $table = 'pengaduan';
 
+	public $file_gambar;
+
 	public $timestamps = false;
+	
+
 
 	public $fillable = ['email','gambar','tanggal','konten','selesai','kategori','id_taman','id_admin','verified'];	
 
+	public static function imagePath() { return public_path().'/uploads/pengaduan'; }
+
+	public function saveImage(){
+		$extension = $this->file_gambar->getClientOriginalExtension();
+		$this->file_gambar->move(Pengaduan::imagePath(),$this->id.".".$extension);
+		$this->gambar = $this->id.".".$extension;
+		$this->save();
+	}
 }
