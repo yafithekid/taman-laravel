@@ -3,7 +3,7 @@
 class SiteController extends BaseController {
 
     public function anyHome(){
-        return View::make('site.home');
+        return View::make('site.home',['models'=>Pengaduan::all()]);
     }
 
     public function getLogin(){

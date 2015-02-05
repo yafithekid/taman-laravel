@@ -16,7 +16,7 @@ class PengaduanController extends BaseController {
 				$model->file_gambar = Input::file('file_gambar');
 				$model->saveImage();
 			}
-			return Redirect::route('pengaduan.view',['id'=>$id]);
+			return Redirect::route('pengaduan.view',['id'=>$model->id]);
 		} else {
 			return View::make('pengaduan.create',['model'=>$model,'tamans'=>Taman::all()]);
 		}
@@ -40,5 +40,18 @@ class PengaduanController extends BaseController {
 		$model->verified = !$model->verified;
 		$model->save();
 		return Redirect::route('pengaduan.index');
+	}
+
+	public function postPenanganan($id)
+	{
+		$pengaduan = Pengaduan::findOrFail($id);
+		$penanganan = new Penanganan();
+		$penanganan->id_pengguna = Auth::user()->id;
+		$penanganan->id_pengaduan = $pengaduan->id;
+		$penanganan->kategori = Input::get('kategori');
+		$penanganan->isi = Input::get('isi');
+		$penanganan->tanggal = Input::get('tanggal');
+		$penanganan->save();
+		return View::make('pengaduan.view',['model'=>$pengaduan]);
 	}
 }

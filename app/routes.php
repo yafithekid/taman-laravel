@@ -11,14 +11,14 @@
 |
 */
 
-
 Route::group(['prefix'=>'/pengaduan'],function()
 {
 	Route::get('/create',['uses' => 'PengaduanController@getCreate','as' => 'pengaduan.create']);
 	Route::post('/create',['uses' => 'PengaduanController@postCreate','as'=>'pengaduan.create.submit']);
-	Route::any('/view',['uses' => 'PengaduanController@anyView','as' => 'pengaduan.view']);
+	Route::any('/{id}/view',['uses' => 'PengaduanController@anyView','as' => 'pengaduan.view']);
     Route::any('/index',['uses' => 'PengaduanController@anyIndex','as'=>'pengaduan.index']);
     Route::any('/{id}/verifikasi',['uses' => 'PengaduanController@anyVerifikasi','as'=>'pengaduan.verifikasi']);
+    Route::post('/{id}/penanganan',['uses' => 'PengaduanController@postPenanganan','as'=>'pengaduan.penanganan.create.submit']);
 });
 
 Route::get('/login',['uses'=>'SiteController@getLogin','as'=>'login']);

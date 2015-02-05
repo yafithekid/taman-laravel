@@ -1,7 +1,7 @@
 @extends('layouts.master')
-<h1>Daftar Laporan</h1>
 @section('content')
 <table class='table table-striped'>
+    <h1>Daftar Pengaduan</h1>
 <tr>
 	<th>Taman</th>
 	<th>Pelapor</th>

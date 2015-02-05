@@ -21,7 +21,11 @@ class Pengaduan extends Eloquent {
 	
 
 
-	public $fillable = ['email','gambar','tanggal','konten','selesai','kategori','id_taman','id_admin','verified'];	
+	public $fillable = ['email','gambar','tanggal','konten','selesai','kategori','id_taman','id_pengguna','verified'];	
+
+	public function penanganan(){
+		return $this->hasMany('Penanganan','id_pengaduan','id');
+	}
 
 	public static function imagePath() { return public_path().'/uploads/pengaduan'; }
 
@@ -30,5 +34,10 @@ class Pengaduan extends Eloquent {
 		$this->file_gambar->move(Pengaduan::imagePath(),$this->id.".".$extension);
 		$this->gambar = $this->id.".".$extension;
 		$this->save();
+	}
+
+	public function getImageUrl()
+	{
+		return asset('uploads/pengaduan/'.$this->gambar);
 	}
 }
