@@ -1,4 +1,4 @@
-@extends('layouts.admin-master')
+@extends('layouts.master')
 @section('content')
 @foreach($models as $model)
 <div class="row">
@@ -7,7 +7,7 @@
         <p>{{$model->tanggal}}</p>
     </div>
     <div class="col-md-4">
-        <a href="blog-post.html">
+        <a href="{{URL::route('pengaduan.view',['id'=>$model->id])}}">
             <img class="img-responsive img-hover" width='600px' height='600px' src="{{$model->getImageUrl()}}" alt="">
         </a>
     </div>
@@ -26,11 +26,21 @@
         <div class="conf">
         <p><div class="category"><i class="cat fa fa-bookmark"></i> {{$model->kategori_pengaduan->nama}}</a></div>
         </p>
-        <p><div class="statrep"><i class="star fa fa-star"></i>Dalam proses penanganan </div></a>
+        <p>
+            
         </p>
         </div>
-        <br />
-        <p>{{$model->konten}}</p>
+        <p style='word-break: break-all'>{{substr(HTML::entities($model->konten),0,300)}} ...</p>
+        <div class='col-xs-5'>
+            <select onchange='location = this.options[this.selected.value];' class='form-control'>
+                <option value='<?=URL::route("pengaduan.verifikasi",['id'=>$model->id,'verified'=>0]);?>' @if(!$model->verified) selected @endif >
+                    Belum diverifikasi
+                </option>
+                <option value='<?=URL::route("pengaduan.verifikasi",['id'=>$model->id,'verified'=>1]);?>' @if($model->verified) selected @endif>
+                    Sudah diverifikasi
+                </option>
+            </select>
+            </div>
     </div>
 
 </div>
@@ -38,5 +48,6 @@
 <hr>
 @endforeach
 
+{{$models->links()}}
 @stop
 

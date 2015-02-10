@@ -25,9 +25,9 @@ class Pengguna extends Eloquent implements UserInterface, RemindableInterface {
 
 	public $timestamps = false;
 
-	public function kategori()
+	public function kategoriPengguna()
 	{
-		return $this->hasOne('KategoriPengguna','id_kategori_pengguna','id');
+		return $this->belongsTo('KategoriPengguna','id_kategori_pengguna','id');
 	}
 
 }

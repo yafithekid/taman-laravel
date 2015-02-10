@@ -4,7 +4,7 @@ class PengaduanController extends BaseController {
 
 	public function getHome()
 	{
-		$models = Pengaduan::all();
+		$models = Pengaduan::paginate(6);
 		return View::make('pengaduan.home',['models' => $models]);
 	}
 
@@ -65,10 +65,14 @@ class PengaduanController extends BaseController {
 		$penanganan = new Penanganan();
 		$penanganan->id_pengguna = Auth::user()->id;
 		$penanganan->id_pengaduan = $pengaduan->id;
-		$penanganan->kategori = Input::get('kategori');
 		$penanganan->isi = Input::get('isi');
-		$penanganan->tanggal = Input::get('tanggal');
-		$penanganan->save();
-		return View::make('pengaduan.view',['model'=>$pengaduan]);
+
+		$validator = Validator::make(Input::all(),Penanganan::$rules);
+		if (!$validator->fails()){
+			$penanganan->save();
+			return Redirect::route('pengaduan.view',['id'=>$id]);
+		} else {
+			return Redirect::back()->withInput()->withErrors($validator);
+		}
 	}
 }

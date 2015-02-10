@@ -33,18 +33,19 @@
         <div class="page-header"><?= HTML::image("img/dp.png","Chania");?></div>
     </div>
     <div class="col-md-4 kategori">
-        <select class="form-control" id="sel1">
+        <!-- nanti gw bikin kalo gak mager -->
+        <!-- <select class="form-control" id="sel1">
                 <option>-- Urutkan berdasarkan --</option>
                 <option>Lokasi taman</option>
                 <option>Kategori pengaduan</option>
                 <option>Tanggal</option>
-        </select>
+        </select> -->
     </div>
 </div>
 @foreach($models as $model)
 <div class='col-md-6'>
     <div class='col-md-11'>
-        <div class="row well wpost">
+        <div class="row well wpost" style='min-height:403px;'>
             <p>{{$model->tanggal}}</p>
             <a href="{{URL::route('pengaduan.view',['id' => $model->id])}}">
                 <?= HTML::image($model->getImageUrl()); ?>
@@ -56,14 +57,15 @@
             <div class="conf">
                 <p><div class="category"><i class="cat fa fa-bookmark"></i>{{$model->kategori_pengaduan->nama}}</a></div></p>
             
-                <p><div class="statrep"><i class="star fa fa-star"></i>{{$model->verified}}</div></a></p>
+                <p><div class="statrep"><i class="star fa fa-star"></i>@if ($model->verified) Terverifikasi @else Belum diverifikasi @endif</div></a></p>
             </div>
             <br />
-            <p>{{$model->konten}}</p>
+            <p style='word-break: break-all'>{{substr(HTML::entities($model->konten),0,100) }}</p>
         </div>
     </div>
 </div>
 @endforeach
+{{$models->links()}}
 @stop
 @section('script')
 @parent

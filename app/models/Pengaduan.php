@@ -26,10 +26,11 @@ class Pengaduan extends Eloquent {
 
 
 	public static $rules = [
-		'judul' => 'required',
-		'email' => 'required | email',
+		'judul' => 'required | max:200',
+		'email' => 'required | email | max:200',
 		'id_taman' => 'required | numeric',
-		'id_kategori_pengaduan' => 'required | numeric'
+		'id_kategori_pengaduan' => 'required | numeric',
+		'konten' => 'required | max:1000'
 	];
 
 	public function penanganan(){

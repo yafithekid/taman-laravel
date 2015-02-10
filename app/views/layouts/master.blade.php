@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -69,6 +68,7 @@
     <!-- /.container -->
 
     <!-- jQuery -->
+    @section('script')
     <?=HTML::script("js/jquery.js");?>
     <?=HTML::script("js/bootstrap.min.js");?>
     <?=HTML::script("js/price-range.js");?>
@@ -77,7 +77,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <?=HTML::script("js/bootstrap.min.js");?>
-
+    @show
 </body>
 
 </html>
