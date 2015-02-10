@@ -15,12 +15,14 @@ Route::filter("auth",function(){
         return Redirect::route('login');
     }
 });
+Route::pattern('id','[0-9]+');
 
 Route::group(['prefix'=>'/pengaduan'],function()
 {
     Route::group(['before'=>'auth'], function(){
         Route::any('/{id}/delete',['uses'=>'PengaduanController@anyDelete','as' => 'pengaduan.delete']);
-        
+        Route::any('/{id}/verifikasi/{verified}',['uses' => 'PengaduanController@anyVerifikasi','as'=>'pengaduan.verifikasi']);
+    
     });
 	
     Route::any('/index',['uses' => 'PengaduanController@anyIndex','as'=>'pengaduan.index']);
@@ -28,7 +30,6 @@ Route::group(['prefix'=>'/pengaduan'],function()
     Route::post('/create',['uses' => 'PengaduanController@postCreate','as'=>'pengaduan.create.submit']);
 	Route::any('/{id}/view',['uses' => 'PengaduanController@anyView','as' => 'pengaduan.view']);
     
-    Route::any('/{id}/verifikasi',['uses' => 'PengaduanController@anyVerifikasi','as'=>'pengaduan.verifikasi']);
     Route::post('/{id}/penanganan',['uses' => 'PengaduanController@postPenanganan','as'=>'pengaduan.penanganan.create.submit']);
 });
 

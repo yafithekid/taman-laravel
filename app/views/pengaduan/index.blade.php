@@ -32,7 +32,7 @@
         </div>
         <p style='word-break: break-all'>{{substr(HTML::entities($model->konten),0,300)}} ...</p>
         <div class='col-xs-5'>
-            <select onchange='location = this.options[this.selected.value];' class='form-control'>
+            <select onchange='window.location.href = this.value' class='form-control'>
                 <option value='<?=URL::route("pengaduan.verifikasi",['id'=>$model->id,'verified'=>0]);?>' @if(!$model->verified) selected @endif >
                     Belum diverifikasi
                 </option>

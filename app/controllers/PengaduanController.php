@@ -49,12 +49,15 @@ class PengaduanController extends BaseController {
 		return Redirect::back();
 	}
 
-	public function anyVerifikasi($id)
+	public function anyVerifikasi($id,$verified)
 	{
 		$model = Pengaduan::findOrFail($id);
-		$model->verified = !$model->verified;
-		$model->save();
-		return Redirect::route('pengaduan.index');
+		if ($verified == 0 || $verified == 1){
+			$model->verified = $verified;
+			$model->save();
+		}
+		
+		return Redirect::back();
 	}
 
 
