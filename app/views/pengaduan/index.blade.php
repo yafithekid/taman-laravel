@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.admin-master')
 @section('content')
 @foreach($models as $model)
 <div class="row">

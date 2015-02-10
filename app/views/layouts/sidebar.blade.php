@@ -3,8 +3,6 @@
     $daftar_kategori_pengaduan = KategoriPengaduan::all();
     $daftar_taman = Taman::all();
 ?>
-<div class="row-fluid">
-    <div class="submit well">
         <h6>Laporkan Taman</h6>
         <form action='{{URL::route("pengaduan.create.submit");}}' method='POST' enctype='multipart/form-data'>
             <div class="form-group">
@@ -38,5 +36,4 @@
                 <button type="submit" class="col-lg-offset-4 sub btn btn-default">Kirim laporan</button>
             </div>
         </form>
-    </div>
-</div>
+    

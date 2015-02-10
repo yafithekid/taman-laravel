@@ -2,6 +2,12 @@
 
 class PengaduanController extends BaseController {
 
+	public function getHome()
+	{
+		$models = Pengaduan::all();
+		return View::make('pengaduan.home',['models' => $models]);
+	}
+
 	public function getCreate()
 	{
 		return View::make('pengaduan.create',['model' => new Pengaduan(),'tamans'=>Taman::all()]);
@@ -26,7 +32,7 @@ class PengaduanController extends BaseController {
 
 	public function anyIndex()
 	{
-		$models = Pengaduan::all();
+		$models = Pengaduan::paginate(5);
 		return View::make('pengaduan.index',['models'=>$models]);
 	}
 
@@ -39,8 +45,8 @@ class PengaduanController extends BaseController {
 	public function anyDelete($id)
 	{
 		$model = Pengaduan::findOrFail($id);
-		//$model->delete();
-		return Redirect::back()->with('success','Data berhasil dihapus');
+		$model->delete();
+		return Redirect::back();
 	}
 
 	public function anyVerifikasi($id)

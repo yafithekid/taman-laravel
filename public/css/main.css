@@ -12,6 +12,7 @@
 html,
 body {
     height: 100%;
+    background-color: #e7efed;
 }
 
 body {
@@ -19,7 +20,9 @@ body {
 }
 
 nav {
-    height: 75px;
+    height: 70px;
+    border-bottom: 3px;
+    border-bottom-color: #7a7a7a;
 }
 
 .navbar-inverse {
@@ -49,14 +52,20 @@ h3 a {
 }
 
 h4 {
-    font-size: 0.7em;
+    font-size: 0.8em;
     font-family: 'Montserrat', sans-serif;
     color: #e6e6e6 !important;
 }
 
+.namep {
+    font-size: 0.7em;
+    color: #a7a7a7 !important;
+    margin-top: -0.8%;
+}
+
 h5 {
     margin-top: -1%;
-    font-size: 1.3em;
+    font-size: 1.1em;
     font-family: 'Montserrat', sans-serif;
     color: #e6e6e6;
 }
@@ -76,6 +85,10 @@ p {
 
 .report {
     margin-top: -3%;
+}
+
+.navbar {
+  border-bottom: 5px !important;
 }
 
 .navbar-brand {
@@ -206,6 +219,15 @@ footer {
 
 }
 
+.wpost {
+  background-color: #fff;
+  border-radius: 1 !important;
+  border-color: #cdcdcd !important;
+  box-shadow: none;
+  border-color: transparent;
+
+}
+
 .form-control {
   border-radius: 0;
   box-shadow: none;
@@ -224,6 +246,8 @@ footer {
 
 .submit {
   background-color: #fbd181;
+  position: fixed;
+  width: 25%;
 }
 
 .login {
@@ -284,7 +308,7 @@ footer {
 }
 
 .breadcrumb {
-  background-color: #e0f2eb;
+  background-color: #f4f9f8;
 }
 
 .breadcrumb > li > a {
@@ -325,13 +349,31 @@ footer {
 }
 
 .comment {
-  border-color: #96be9e;
-  border-width: 3px;
 }
 
 .comment:focus {
-  border-color: #5b9567;
-  border-width: 3px;
+
+}
+
+.nogap {
+  padding-right: 0 !important;
+   margin-right: 0 !important;
+}
+
+.nogap2 {
+  padding-left: 0 !important;
+   margin-left: 0 !important;
+}
+.kategori {
+  margin-top: 6%;
+}
+
+.page-header {
+  font-size: 1.7em;
+}
+
+.carousel-indicators {
+  float: right;
 }
 
 /* End Custom */
@@ -826,10 +868,6 @@ ul.sub-menu {
 
 .carousel-indicators li.active {
 	  background: #770000;
-}
-
-.item {
-  padding-left: 100px;
 }
 
 

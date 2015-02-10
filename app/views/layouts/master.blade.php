@@ -43,18 +43,24 @@
         <!-- /.row -->
 
         <div class="row">
+            <div class='col-xs-12'>
+                <!-- Blog Entries Column -->
+                <div class="col-md-8">
+                    @yield('content')
+                </div>
+                <!-- Blog Sidebar Widgets Column -->
+                <div class="col-md-4">
+                    <div class="row-fluid">
+                        <div class="submit well" style="margin-top: -30px; margin-left: -10px;">
+                            @section('sidebar')
+                                @include('layouts.sidebar')
+                            @show
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Blog Entries Column -->
-            <div class="col-md-8">
-                @yield('content')
+                <hr/>
             </div>
-            <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-                @include('layouts.sidebar')
-            </div>
-
-            <hr/>
-
             @include('layouts.footer')
 
         </div>

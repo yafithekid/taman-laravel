@@ -36,4 +36,4 @@ Route::get('/login',['uses'=>'AutentikasiController@getLogin','as'=>'login']);
 Route::post('/login',['uses'=>'AutentikasiController@postLogin','as'=>'login.submit']);
 Route::get('/logout',['uses'=>'AutentikasiController@getLogout','as'=>'logout']);
 
-Route::get('/',['uses'=>'PengaduanController@anyIndex','as'=>'home']);
+Route::get('/',['uses'=>'PengaduanController@getHome','as'=>'home']);
