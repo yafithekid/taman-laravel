@@ -10,15 +10,17 @@ class PengaduanController extends BaseController {
 	public function postCreate()
 	{
 		$model = new Pengaduan();
-		$model->fill(Input::all());
-		if ($model->save()){
+		$validator = Validator::make(Input::all(),Pengaduan::$rules);
+		if (!$validator->fails()){	
+			$model->fill(Input::all());
+			$model->save();
 			if (Input::hasFile('file_gambar')){
 				$model->file_gambar = Input::file('file_gambar');
 				$model->saveImage();
 			}
 			return Redirect::route('pengaduan.view',['id'=>$model->id]);
 		} else {
-			return View::make('pengaduan.create',['model'=>$model,'tamans'=>Taman::all()]);
+			return Redirect::back()->withErrors($validator)->withInput();
 		}
 	}
 
@@ -34,6 +36,13 @@ class PengaduanController extends BaseController {
 		return View::make('pengaduan.view',['model'=>$model]);
 	}
 
+	public function anyDelete($id)
+	{
+		$model = Pengaduan::findOrFail($id);
+		//$model->delete();
+		return Redirect::back()->with('success','Data berhasil dihapus');
+	}
+
 	public function anyVerifikasi($id)
 	{
 		$model = Pengaduan::findOrFail($id);
@@ -41,6 +50,8 @@ class PengaduanController extends BaseController {
 		$model->save();
 		return Redirect::route('pengaduan.index');
 	}
+
+
 
 	public function postPenanganan($id)
 	{

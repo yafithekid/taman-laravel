@@ -1,10 +1,8 @@
 <?php
 
-class SiteController extends BaseController {
+class AutentikasiController extends BaseController {
 
-    public function anyHome(){
-        return View::make('site.home',['models'=>Pengaduan::all()]);
-    }
+    
 
     public function getLogin(){
         return View::make('site.login',['model'=>new Pengguna()]);
@@ -26,7 +24,7 @@ class SiteController extends BaseController {
             return View::make('site.login',['model' => $model]);
         } else {
             Auth::login($model);
-            return Redirect::route('home');
+            return Redirect::route('pengaduan.index');
         }
     }
 
