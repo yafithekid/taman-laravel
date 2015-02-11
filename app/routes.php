@@ -17,6 +17,13 @@ Route::filter("auth",function(){
 });
 Route::pattern('id','[0-9]+');
 
+Route::group(['prefix' => '/api'],function(){
+    Route::group(['prefix' => '/pengaduan'],function(){
+        Route::post('/create',['uses' => 'ApiController@pengaduanPostCreate','as'=>'api.pengaduan.create.submit']);
+        Route::get('/create',['uses' => 'ApiController@pengaduanGetCreate','as'=>'api.pengaduan.create']);
+    });
+});
+
 Route::group(['prefix'=>'/pengaduan'],function()
 {
     Route::group(['before'=>'auth'], function(){
