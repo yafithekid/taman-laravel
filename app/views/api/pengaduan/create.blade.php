@@ -32,7 +32,7 @@
                 <input name='file_gambar' id='file_gambar' type="file" class="form-control" placeholder="Sisipkan foto">
                 
                 <span style='color:red'>{{$errors->first('konten')}}</span>
-                <textarea name='konten' class="form-control" rows="5" id="comment" placeholder="Laporan" value='{{Input::old('konten')}}'></textarea>
+                <textarea name='konten' class="form-control" rows="5" id="konten" placeholder="Laporan" value='{{Input::old('konten')}}'></textarea>
                 <button type="submit" class="col-lg-offset-4 sub btn btn-default" onclick='return submit()'>Kirim Laporan</button>
             </div>
 @stop
