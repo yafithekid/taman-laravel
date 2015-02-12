@@ -1,31 +1,53 @@
 <?php
 
 class PenggunaController extends BaseController {
-
-    
-
-    public function getLogin(){
-        return View::make('site.login',['model'=>new Pengguna()]);
+    public function getIndex()
+    {
+        return View::make('pengguna.index',['daftar_pengguna' => Pengguna::paginate(10)]);
     }
 
-    public function getLogout(){
-        Auth::logout();
-        return Redirect::route('home');
+    public function getCreate()
+    {
+        return View::make('pengguna.create',['model' => new Pengguna()]);
     }
 
-    public function postLogin(){
-        $username = Input::get('username');
-        $password = sha1(Input::get('username'));
-
-        $model = Pengguna::where('username','=',$username)->where('password','=',$password)->first();
-        if ($model === null){
-            $model = new Pengguna(); $model->username = $username;
-            Session::flash('login.error','Invalid username/password');
-            return View::make('site.login',['model' => $model]);
+    public function postCreate()
+    {
+        $model = new Pengguna();
+        $model->fill(Input::all());
+        $validator = Validator::make(Input::all(),Pengguna::$rules);
+        if ($validator->fails()){
+            return View::make('pengguna.create',['model' => $model,'errors'=>$validator->messages()]);
         } else {
-            Auth::login($model);
-            return Redirect::route('pengaduan.index');
+            $model->save();
+            return Redirect::route('pengguna.index');
         }
+    }
+
+    public function getUpdate($id)
+    {
+        $model = Pengguna::findOrFail($id);
+        return View::make('pengguna.update',['model' => $model]);
+    } 
+
+    public function postUpdate($id)
+    {
+        $model = Pengguna::findOrFail($id);
+        $model->fill(Input::all());
+        $validator = Validator::make(Input::all(),Pengguna::$rules);
+        if ($validator->fails()){
+            return View::make('pengguna.update',['model' => $model,'errors'=>$validator->messages()]);
+        } else {
+            $model->save();
+            return Redirect::route('pengguna.index');
+        }
+    }
+
+    public function getDelete($id)
+    {
+        $model = Pengguna::findOrFail($id);
+        $model->delete();
+        return Redirect::back();
     }
 
 }

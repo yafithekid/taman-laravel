@@ -12,6 +12,12 @@ class Taman extends Eloquent {
 
 	public $timestamps = false;
 
-	public $fillable = ['nama','alamat','koordinat_x','koordinat_y','gambar'];
+	public $fillable = ['nama','alamat','koordinat_x','koordinat_y'];
 
+    public static $rules = [
+        'nama' => 'required | max:200',
+        'alamat' => 'required | max:200',
+        'koordinat_x' => 'numeric',
+        'koordinat_y' => 'numeric'
+    ];
 }

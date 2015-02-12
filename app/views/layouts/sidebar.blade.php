@@ -10,7 +10,7 @@
 <h6>Laporkan Taman</h6>
 <form action='{{URL::route("pengaduan.create.submit");}}' method='POST' enctype='multipart/form-data'>
     <div class="form-group">
-        <span style='color:red'>{{$errors->first('nama')}}</span>
+        <span style='color:red'>{{$errors->first('judul')}}</span>
         <input name='judul' type="text" class="form-control" id="usr" placeholder="Judul" value='{{Input::old("judul")}}'>
 
         <span style='color:red'>{{$errors->first('email')}}</span>
