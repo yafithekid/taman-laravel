@@ -16,7 +16,7 @@ return array(
 	*/
 
 	'driver' => 'smtp',
-
+	//'driver' => 'mail',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Address
@@ -28,8 +28,8 @@ return array(
 	|
 	*/
 
-	'host' => 'smtp.mailgun.org',
-
+	'host' => 'smtp.gmail.com',
+	//'host' => 'localhost',
 	/*
 	|--------------------------------------------------------------------------
 	| SMTP Host Port
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'if3250.p1.kel1@gmail.com', 'name' => 'Admin Tamanku'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => null,
+	'username' => 'if3250.p1.kel1@gmail.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => null,
+	'password' => 'gantengbanget',
 
 	/*
 	|--------------------------------------------------------------------------

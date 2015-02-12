@@ -28,7 +28,8 @@
         </div>
     @endforeach
     @endif
-    <hr/>   
+    <hr/>
+    <a href='{{URL::route('pengaduan.email',['id'=>$model->id])}}' class='sub btn btn-primary'>Email</a>
     <div class='row'>
         <form action='{{URL::route("pengaduan.penanganan.create.submit",["id"=>$model->id])}}' method='POST'>
             @include('pengaduan._penanganan');

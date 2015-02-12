@@ -63,7 +63,7 @@ h4 {
     margin-top: -0.8%;
 }
 
- h5 {
+h5 {
     margin-top: -1%;
     font-size: 1.1em;
     font-family: 'Montserrat', sans-serif;
@@ -244,10 +244,32 @@ footer {
 
 }
 
+.nav-pills > li {
+  background-color: #084133;
+  margin-top: 5px;
+}
+
+.nav-pills > li:hover {
+  background-color: #bbbbbb;
+  border-radius: 0;
+  margin-top: 5px;
+}
+
+.nav-pills > li > a {
+  color: #fff;
+}
+
 .submit {
   background-color: #fbd181;
   position: fixed;
   width: 25%;
+}
+
+.admenu {
+  margin-top: -2%;
+  background-color: #fbd181;
+  position: fixed;
+  width: 19%;
 }
 
 .login {
@@ -267,6 +289,23 @@ footer {
   border-color: transparent;
 }
 
+.newpark {
+  font-size: 1.2em !important;
+}
+
+.subadd {
+  color: #fff;
+  border-radius: 0;
+  background-color: #055d26;
+  border-color: transparent;
+  font-size: 0.8em;
+}
+
+.subadd:hover {
+  background-color: #cecece;
+  border-color: transparent;
+}
+
 .publish {
   color: #fff;
   border-radius: 0;
@@ -277,6 +316,21 @@ footer {
 }
 
 .publish:hover {
+  background-color: #cecece;
+  border-color: transparent;
+}
+
+.add {
+  color: #fff;
+  border-radius: 0;
+  background-color: #055d26;
+  border-color: transparent;
+  font-size: 0.8em;
+  float: right;
+  margin-bottom: 10px;
+}
+
+.add:hover {
   background-color: #cecece;
   border-color: transparent;
 }
@@ -374,6 +428,32 @@ footer {
 
 .carousel-indicators {
   float: right;
+}
+
+.checkbox {
+  float: right;
+}
+
+.table {
+  background-color: #f3f3f3;
+}
+
+thead {
+  background-color: #0b5f3a;
+  color: #fff;
+}
+
+.checkbox {
+  text-align: center;
+}
+
+td > ul > li {
+  float: left;
+  padding-left: 10px;
+}
+
+td > ul > li > a > .fa {
+  color: #b03f01;
 }
 
 /* End Custom */
@@ -2655,16 +2735,8 @@ table > thead > tr > th {
   text-align: center;
 }
 
-table > tbody > tr > td > a > i {
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: center;
-  color: #770000;
-}
-
 table {
   font-size: 0.9em;
-  width: auto !important;
 }
 
 ::-webkit-input-placeholder { /* WebKit browsers */

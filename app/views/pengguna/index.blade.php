@@ -1,28 +1,36 @@
 @extends('layouts.master')
 @section('content')
 <a href='{{URL::route('pengguna.create')}}'>Pengguna baru</a>
-<table class='table table-striped'>
-    <tr>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Nama</th>
-        <th>Kontak</th>
-        <th>Kategori</th>
-        <th>Aksi</th>
-    </tr>
-    @foreach($daftar_pengguna as $pengguna)
-    <tr>
-        <td>{{$pengguna->username}}</td>
-        <td>{{$pengguna->email}}</td>
-        <td>{{$pengguna->nama}}</td>
-        <td>{{$pengguna->kontak}}</td>
-        <td>{{$pengguna->kategoriPengguna->nama}}</td>
-        <td>
-            <a href='{{URL::route('pengguna.update',['id'=>$pengguna->id]);}}'>Ubah</a>
-            <a href='{{URL::route('pengguna.delete',['id'=>$pengguna->id]);}}' onclick='return confirm("Anda yakin ingin menghapus data ini?")'>Hapus</a>
-        </td>
-    </tr>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Nama</th>
+            <th>Kontak</th>
+            <th>Kategori</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php $i = 0; ?>
+        @foreach($daftar_pengguna as $pengguna)
+        <tr>
+            <td>{{$pengguna->username}}</td>
+            <td>{{$pengguna->email}}</td>
+            <td>{{$pengguna->nama}}</td>
+            <td>{{$pengguna->kontak}}</td>
+            <td>{{$pengguna->kategoriPengguna->nama}}</td>
+            <td>
+                <ul>
+                    <li><a href='{{URL::route('pengguna.update',['id'=>$pengguna->id]);}}'><i class="fa fa-pencil"></i></a></li>
+                    <li><a href='{{URL::route('pengguna.delete',['id'=>$pengguna->id]);}}' onclick='return confirm("Anda yakin ingin menghapus data ini?")'><i class="fa fa-times"></i></a></li>
+                </ul>
+            </td>
+        </tr>
     @endforeach
+    </tbody>
 </table>
+
 {{$daftar_pengguna->links()}}
 @stop

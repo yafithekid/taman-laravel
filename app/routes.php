@@ -48,7 +48,7 @@ Route::group(['prefix'=>'/pengaduan'],function()
     Route::group(['before'=>'auth'], function(){
         Route::any('/{id}/delete',['uses'=>'PengaduanController@anyDelete','as' => 'pengaduan.delete']);
         Route::any('/{id}/verifikasi/{verified}',['uses' => 'PengaduanController@anyVerifikasi','as'=>'pengaduan.verifikasi']);
-    
+        Route::get('/{id}/email',['uses' => 'PengaduanController@getEmail','as'=>'pengaduan.email']);
     });
 	
     Route::any('/index',['uses' => 'PengaduanController@anyIndex','as'=>'pengaduan.index']);

@@ -3,6 +3,7 @@
 class TamanController extends BaseController {
     public function getIndex()
     {
+       
         return View::make('taman.index',['daftar_taman' => Taman::paginate(10)]);
     }
 
