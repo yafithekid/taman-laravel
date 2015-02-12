@@ -1,5 +1,13 @@
 @extends('layouts.master')
 @section('content')
+@if (!Auth::guest())
+<a href='{{URL::route("kategori_pengaduan.index")}}' class='sub btn btn-primary'>Lihat Kategori Pengaduan</a>
+@endif
+<br/>
+<br/>
+@if (count($models) == 0)
+<i>Data kosong</i>
+@endif
 @foreach($models as $model)
 <div class="row">
     <div class="col-md-1 text-center">

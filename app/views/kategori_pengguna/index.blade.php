@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('content')
-
+@if (count($daftar_kategori_pengguna) == 0)
+<i>Data kosong</i>
+@endif
 <a href='{{URL::route('kategori_pengguna.create')}}' class='sub btn btn-success'>Tambah kategori pengguna</a>
 <br/><br/>
 <table class="table table-hover">

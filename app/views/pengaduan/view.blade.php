@@ -42,9 +42,9 @@
                 </div>
                 
                 @endif
+                <br/>
 
-
-                <b>Penanganan</b>
+                <b>Daftar Penanganan</b>
                 @if (count($model->penanganan) == 0)
                     <i>Belum ada penanganan</i>
                 @else

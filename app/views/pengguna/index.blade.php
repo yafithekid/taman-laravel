@@ -1,6 +1,8 @@
 @extends('layouts.master')
 @section('content')
-
+@if (count($daftar_pengguna) == 0)
+<i>Data kosong</i>
+@endif
 <a href='{{URL::route('pengguna.create')}}' class='sub btn btn-success'>Pengguna baru</a>
 <span class='pull-right'><a href='{{URL::route('kategori_pengguna.index')}}' class='sub btn btn-success'>Kategori Pengguna</a></span>
 <br/><br/>

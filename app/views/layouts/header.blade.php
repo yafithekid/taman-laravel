@@ -31,8 +31,9 @@
                     @if(Auth::guest())
                     <li><a href="<?=URL::route('login');?>">Halaman Admin</a></li>
                     @else
-                    <li><a href='{{URL::route("taman.index");}}'>Daftar Taman</a></li>
-                    <li><a href='{{URL::route("pengguna.index");}}'>Daftar Pengguna</a></li>
+                    <li><a href='{{URL::route("pengaduan.index");}}'>Pengaduan</a></li>
+                    <li><a href='{{URL::route("taman.index");}}'>Taman</a></li>
+                    <li><a href='{{URL::route("pengguna.index");}}'>Pengguna</a></li>
                     <li><a href='<?=URL::route('logout');?>'>{{Auth::user()->username}} (Logout)</a></li>
                     @endif
                 </ul>

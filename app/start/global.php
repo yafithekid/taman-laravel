@@ -49,6 +49,24 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
+    Log::error($code);
+    //pas debug mode munculin stack trace
+    if (Config::get('app.debug'))
+        return;
+    switch ($code) {
+        case 404:
+            return Response::view('errors.404', array(), 404);
+            break;
+        case 403:
+            return Response::view('errors.403', array(), 403);
+            break;
+        case 500:
+            return Response::view('errors.500', array(), 500);
+            break;
+        default:
+            return  Response::view('errors.404',[],404);
+            break;
+    }
 });
 
 /*
@@ -79,3 +97,30 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+
+// 
+// App::error(function(Exception $exception, $code)
+// {
+//     $pathInfo = Request::getPathInfo();
+//     $message = $exception->getMessage() ?: 'Exception';
+//     Log::error("$code - $message @ $pathInfo\r\n$exception");
+
+//     if (Config::get('app.debug')) {
+//         return;
+//     }
+    
+
+//     switch ($code)
+//     {
+//         var_dump
+//         case 403:
+//             return View::make('errors.403');
+
+//         case 500:
+//             return View::make('errors.500');
+
+//         default:
+//             return View::make('errors.404');
+//     }
+// });
