@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
-<a href='{{URL::route('pengguna.create')}}'>Pengguna baru</a>
+
+<a href='{{URL::route('pengguna.create')}}' class='sub btn btn-success'>Pengguna baru</a>
+<span class='pull-right'><a href='{{URL::route('kategori_pengguna.index')}}' class='sub btn btn-success'>Kategori Pengguna</a></span>
+<br/><br/>
 <table class="table table-hover">
     <thead>
         <tr>
@@ -9,7 +12,7 @@
             <th>Nama</th>
             <th>Kontak</th>
             <th>Kategori</th>
-            <th>Aksi</th>
+            <th>Pengaturan</th>
         </tr>
     </thead>
     <tbody>

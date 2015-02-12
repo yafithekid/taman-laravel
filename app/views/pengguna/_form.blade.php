@@ -13,6 +13,8 @@
 <input name='nama' type='text' value='{{$model->nama}}' class='form-control' placeholder='nama'/>
 <span style='color:red'>@if (isset($errors)) {{$errors->first('nama')}} @endif </span>
 
+<input name='kontak' type='text' value='{{$model->kontak}}' class='form-control' placeholder='kontak'/>
+<span style='color:red'>@if (isset($errors)) {{$errors->first('kontak')}} @endif </span>
 
 <select name='id_kategori_pengguna' class='form-control'>
     <option disabled @if ($model->id_kategori_pengguna == null) selected @endif >-- Pilih Kategori Penguna -- </option>

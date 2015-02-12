@@ -4,4 +4,8 @@ class KategoriPengaduan extends Eloquent {
     public $table = 'kategori_pengaduan';
     
     public $timestamps = false;
+
+    public static $rules = [
+        'nama' => 'required'
+    ];
 }

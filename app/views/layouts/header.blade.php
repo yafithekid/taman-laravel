@@ -28,13 +28,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        @if(Auth::guest())
-                        <a href="<?=URL::route('login');?>">Halaman Admin</a>
-                        @else
-                        <a href='<?=URL::route('logout');?>'>Selamat datang, {{Auth::user()->username}} (Logout)</a>
-                        @endif
-                    </li>
+                    @if(Auth::guest())
+                    <li><a href="<?=URL::route('login');?>">Halaman Admin</a></li>
+                    @else
+                    <li><a href='{{URL::route("taman.index");}}'>Daftar Taman</a></li>
+                    <li><a href='{{URL::route("pengguna.index");}}'>Daftar Pengguna</a></li>
+                    <li><a href='<?=URL::route('logout');?>'>{{Auth::user()->username}} (Logout)</a></li>
+                    @endif
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

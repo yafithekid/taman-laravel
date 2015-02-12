@@ -42,6 +42,23 @@ Route::group(['prefix' => '/taman','before' => 'auth'],function(){
     Route::get('/{id}/delete',['uses' => 'TamanController@getDelete','as' => 'taman.delete']);
 });
 
+Route::group(['prefix' => '/kategori_pengguna','before' => 'auth'],function(){
+    Route::get('/create',['uses' => 'KategoriPenggunaController@getCreate' ,'as' =>'kategori_pengguna.create']);
+    Route::post('/create',['uses' => 'KategoriPenggunaController@postCreate' , 'as' =>'kategori_pengguna.create.submit']);
+    Route::get('/{id}/update',['uses' => 'KategoriPenggunaController@getUpdate', 'as' =>'kategori_pengguna.update']);
+    Route::post('/{id}/update',['uses' => 'KategoriPenggunaController@postUpdate' , 'as' => 'kategori_pengguna.update.submit']);
+    Route::get('/index',['uses' => 'KategoriPenggunaController@getIndex', 'as' =>'kategori_pengguna.index']);
+    Route::get('/{id}/delete',['uses' => 'KategoriPenggunaController@getDelete','as' => 'kategori_pengguna.delete']);
+});
+
+Route::group(['prefix' => '/kategori_pengaduan','before' => 'auth'],function(){
+    Route::get('/create',['uses' => 'KategoriPengaduanController@getCreate' ,'as' =>'kategori_pengaduan.create']);
+    Route::post('/create',['uses' => 'KategoriPengaduanController@postCreate' , 'as' =>'kategori_pengaduan.create.submit']);
+    Route::get('/{id}/update',['uses' => 'KategoriPengaduanController@getUpdate', 'as' =>'kategori_pengaduan.update']);
+    Route::post('/{id}/update',['uses' => 'KategoriPengaduanController@postUpdate' , 'as' => 'kategori_pengaduan.update.submit']);
+    Route::get('/index',['uses' => 'KategoriPengaduanController@getIndex', 'as' =>'kategori_pengaduan.index']);
+    Route::get('/{id}/delete',['uses' => 'KategoriPengaduanController@getDelete','as' => 'kategori_pengaduan.delete']);
+});
 
 Route::group(['prefix'=>'/pengaduan'],function()
 {

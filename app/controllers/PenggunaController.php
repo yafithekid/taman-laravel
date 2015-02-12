@@ -37,7 +37,7 @@ class PenggunaController extends BaseController {
     {
         $model = Pengguna::findOrFail($id);
         $model->fill(Input::all());
-        $validator = Validator::make(Input::all(),Pengguna::$rules);
+        $validator = Validator::make(Input::all(),Pengguna::$update_rules);
         if ($validator->fails()){
             $model->password = '';
             return View::make('pengguna.update',['model' => $model,'errors'=>$validator->messages()]);

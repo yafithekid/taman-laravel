@@ -3,10 +3,7 @@
     $daftar_kategori_pengaduan = KategoriPengaduan::all();
     $daftar_taman = Taman::all();
 ?>
-@if (!Auth::guest())
-    <a href='{{URL::route("taman.index");}}'>Daftar Taman</a> | 
-    <a href='{{URL::route("pengguna.index");}}'>Daftar Pengguna</a>
-@endif
+
 <h6>Laporkan Taman</h6>
 <form action='{{URL::route("pengaduan.create.submit");}}' method='POST' enctype='multipart/form-data'>
     <div class="form-group">

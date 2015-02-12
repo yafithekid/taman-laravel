@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<a href='{{URL::route('taman.create')}}'>Taman baru</a>
+<a href='{{URL::route('taman.create')}}' class='sub btn btn-success'>Taman baru</a>
+<br/><br/><br/>
 <table class="table table-hover">
     <thead>
         <tr>

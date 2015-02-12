@@ -33,6 +33,15 @@ class Pengguna extends Eloquent implements UserInterface, RemindableInterface {
 		'kontak' => 'required',
 		'id_kategori_pengguna' => 'integer'
 	];
+
+	public static $update_rules = [
+		'username' => 'required',
+		'password' => 'required',
+		'email' => 'required | email',
+		'nama' => 'required',
+		'kontak' => 'required',
+		'id_kategori_pengguna' => 'integer'
+	];
 	
 	public function kategoriPengguna()
 	{
