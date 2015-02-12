@@ -82,11 +82,14 @@ class PengaduanController extends BaseController {
 	public function getEmail($id)
 	{
 		$model = Pengaduan::findOrFail($id);
+		$id_pengguna = Input::get('id_pengguna');
+		$pengguna = Pengguna::findOrFail($id_pengguna);
+
 
 		// I'm creating an array with user's info but most likely you can use $user->email or pass $user object to closure later
 		$user = array(
-			'email'=> 'yafithekid212@gmail.com',
-			'name'=>'Muhammad Yafi'
+			'email'=> $pengguna->email,
+			'name'=> $pengguna->nama
 		);
 
 		// the data that will be passed into the mail view blade template
@@ -95,9 +98,9 @@ class PengaduanController extends BaseController {
 		);
 
 		// use Mail::send function to send email passing the data and using the $user variable in the closure
-		Mail::send('pengaduan.email', $data, function($message) use ($user)
+		Mail::send('pengaduan.email', $data, function($message) use ($user,$model)
 		{
-		  $message->from('if3250.p1.kel1', 'Admin Tamanku');
+		  $message->from('if3250.p1.kel1@gmail.com', 'Admin Tamanku');
 		  $message->to($user['email'], $user['name'])->subject('Pengaduan '.$model->judul);
 		});
 	}

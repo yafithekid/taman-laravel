@@ -27,9 +27,9 @@
                     <form method='get' action='{{URL::route('pengaduan.email',['id' => $model->id])}}'>
                     <div class='col-xs-10'>
                         
-                        <select name='email' class='form-control'>
+                        <select name='id_pengguna' class='form-control'>
                             @foreach($daftar_pengguna as $pengguna)
-                            <option value=''>{{$pengguna->kategoriPengguna->nama}} - {{$pengguna->nama}}</option>
+                            <option value='{{$pengguna->id}}'>{{$pengguna->kategoriPengguna->nama}} - {{$pengguna->nama}}</option>
                             @endforeach
                         </select>
                         
