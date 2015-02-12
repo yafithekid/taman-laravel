@@ -17,8 +17,10 @@ class PenggunaController extends BaseController {
         $model->fill(Input::all());
         $validator = Validator::make(Input::all(),Pengguna::$rules);
         if ($validator->fails()){
+            $model->password = '';
             return View::make('pengguna.create',['model' => $model,'errors'=>$validator->messages()]);
         } else {
+            $model->password = sha1($model->password);
             $model->save();
             return Redirect::route('pengguna.index');
         }
@@ -27,6 +29,7 @@ class PenggunaController extends BaseController {
     public function getUpdate($id)
     {
         $model = Pengguna::findOrFail($id);
+        $model->password = '';
         return View::make('pengguna.update',['model' => $model]);
     } 
 
@@ -36,8 +39,10 @@ class PenggunaController extends BaseController {
         $model->fill(Input::all());
         $validator = Validator::make(Input::all(),Pengguna::$rules);
         if ($validator->fails()){
+            $model->password = '';
             return View::make('pengguna.update',['model' => $model,'errors'=>$validator->messages()]);
         } else {
+            $model->password = sha1($model->password);
             $model->save();
             return Redirect::route('pengguna.index');
         }
