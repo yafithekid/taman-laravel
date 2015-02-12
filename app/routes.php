@@ -24,6 +24,25 @@ Route::group(['prefix' => '/api'],function(){
     });
 });
 
+Route::group(['prefix' => '/pengguna','before' => 'auth'],function(){
+    Route::get('/create',['uses' => 'PenggunaController@getCreate' ,'as' =>'pengguna.create']);
+    Route::post('/create',['uses' => 'PenggunaController@postCreate' , 'as' =>'pengguna.create.submit']);
+    Route::get('/{id}/update',['uses' => 'PenggunaController@getUpdate', 'as' =>'pengguna.update']);
+    Route::post('/{id}/update',['uses' => 'PenggunaController@postUpdate' , 'as' => 'pengguna.update.submit']);
+    Route::get('/index',['uses' => 'PenggunaController@getIndex', 'as' =>'pengguna.index']);
+    Route::get('/{id}/delete',['uses' => 'PenggunaController@getDelete','as' => 'pengguna.delete']);
+});
+
+Route::group(['prefix' => '/taman','before' => 'auth'],function(){
+    Route::get('/create',['uses' => 'TamanController@getCreate' ,'as' =>'taman.create']);
+    Route::post('/create',['uses' => 'TamanController@postCreate' , 'as' =>'taman.create.submit']);
+    Route::get('/{id}/update',['uses' => 'TamanController@getUpdate', 'as' =>'taman.update']);
+    Route::post('/{id}/update',['uses' => 'TamanController@postUpdate' , 'as' => 'taman.update.submit']);
+    Route::get('/index',['uses' => 'TamanController@getIndex', 'as' =>'taman.index']);
+    Route::get('/{id}/delete',['uses' => 'TamanController@getDelete','as' => 'taman.delete']);
+});
+
+
 Route::group(['prefix'=>'/pengaduan'],function()
 {
     Route::group(['before'=>'auth'], function(){
