@@ -15,9 +15,10 @@ class AutentikasiController extends BaseController {
 
     public function postLogin(){
         $username = Input::get('username');
-        $password = sha1(Input::get('username'));
+        $password = Input::get('password');
 
-        $model = Pengguna::where('username','=',$username)->where('password','=',$password)->first();
+        $model = Pengguna::where('username','=',$username)->where('password','=',sha1($password))->first();
+       //var_dump(DB::getQueryLog());exit();
         if ($model === null){
             $model = new Pengguna(); $model->username = $username;
             Session::flash('login.error','Invalid username/password');
