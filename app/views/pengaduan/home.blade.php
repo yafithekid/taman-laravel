@@ -11,7 +11,7 @@
     </div>
 
     <div class="item">
-    <?= HTML::image("img/2.jpg","Chania");?>
+    <?= HTML::image("img/2.JPG","Chania");?>
     <!-- <img src="img/2.jpg" alt="Chania"> -->
     <div class="carousel-caption">
     </div>
