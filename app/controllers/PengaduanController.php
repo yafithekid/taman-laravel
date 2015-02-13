@@ -4,7 +4,7 @@ class PengaduanController extends BaseController {
 
 	public function getHome()
 	{
-		$models = Pengaduan::paginate(6);
+		$models = Pengaduan::orderBy('tanggal','DESC')->paginate(6);
 		return View::make('pengaduan.home',['models' => $models]);
 	}
 
@@ -32,7 +32,7 @@ class PengaduanController extends BaseController {
 
 	public function anyIndex()
 	{
-		$models = Pengaduan::paginate(5);
+		$models = Pengaduan::orderBy('tanggal','DESC')->paginate(5);
 		return View::make('pengaduan.index',['models'=>$models]);
 	}
 
