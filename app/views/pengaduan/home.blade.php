@@ -48,7 +48,7 @@
         <div class="row well wpost" style='min-height:403px;'>
             <p>{{$model->tanggal}}</p>
             <a href="{{URL::route('pengaduan.view',['id' => $model->id])}}">
-                <?= HTML::image($model->getImageUrl()); ?>
+                <?= HTML::image($model->getImageUrl(),'',['width'=>260,'height'=>200]); ?>
             </a>
             <h3>
                 <a href="{{URL::route('pengaduan.view',['id' => $model->id])}}">{{$model->judul}}</a>
