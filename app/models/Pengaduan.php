@@ -54,4 +54,13 @@ class Pengaduan extends Eloquent {
 	{
 		return asset('uploads/pengaduan/'.$this->gambar);
 	}
+
+	public function saveImageFromBase64($base64_string){
+
+	    $data = explode(',', $base64_string);
+	    $extension = 'jpg';
+	    File::put(Pengaduan::imagePath().'/'.$this->id.".".$extension,base64_decode($data[1]));
+	    $this->gambar = $this->id.".jpg";
+	    $this->save();
+	}
 }
