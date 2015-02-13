@@ -1,7 +1,7 @@
-<input name='nama' type='text' value='{{Input::old('nama',$model->nama)}}' class='form-control'/>
+<input name='nama' type='text' value='{{Input::old('nama',$model->nama)}}' class='form-control' placeholder='nama'/>
 <span style='color:red'>@if (isset($errors)) {{$errors->first('nama')}} @endif</span>
 
-<input name='alamat' type='text' value='{{Input::old('alamat',$model->alamat)}}' class='form-control'/>
+<input name='alamat' type='text' value='{{Input::old('alamat',$model->alamat)}}' class='form-control' placeholder='alamat'/>
 <span style='color:red'>@if (isset($errors)) {{$errors->first('alamat')}} @endif</span>
 
 <input type='submit' value='Simpan' class='btn btn-primary' />
