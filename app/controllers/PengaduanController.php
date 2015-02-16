@@ -109,4 +109,32 @@ class PengaduanController extends BaseController {
 		  $message->to($user['email'], $user['name'])->subject('Pengaduan '.$model->judul);
 		});
 	}
+
+	public function getPdf($id)
+	{
+		$model = Pengaduan::findOrFail($id);
+		PDF::SetTitle('Hello World');
+
+		PDF::AddPage();
+		//$result = "<h1>'".$model->judul."'</h1>";
+		PDF::WriteHtml("<center><b>".$model->judul."</b></center>");
+		PDF::Image($model->getImageUrl(),20,35,50,50);
+		PDF::SetY(90);
+		PDF::Write(0,$model->konten);
+		PDF::Write(0,"\n\nPenanganan\n\n");
+		foreach($model->penanganan as $penanganan){
+			PDF::Write(0,$penanganan->pengguna->nama."(".$penanganan->pengguna->kategoriPengguna->nama.")");
+			PDF::Write(0,"\n".$penanganan->isi."\n\n");
+		}
+		//PDF::Image($model->getImagePath());
+		$result = "<img src='".$model->getImageUrl()."'/>";
+		$result.= "<table class='table table-striped'>";
+		$result.= "<tr>";
+		$result.= "<td></td>";
+		$result .= "</tr>";
+		$result.= $model->konten;
+		$result.= "hello world";
+
+		PDF::Output('hello_world.pdf');
+	}
 }

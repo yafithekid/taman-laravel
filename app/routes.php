@@ -66,6 +66,7 @@ Route::group(['prefix'=>'/pengaduan'],function()
         Route::any('/{id}/delete',['uses'=>'PengaduanController@anyDelete','as' => 'pengaduan.delete']);
         Route::any('/{id}/verifikasi/{verified}',['uses' => 'PengaduanController@anyVerifikasi','as'=>'pengaduan.verifikasi']);
         Route::get('/{id}/email',['uses' => 'PengaduanController@getEmail','as'=>'pengaduan.email']);
+        Route::get('/{id}/pdf',['uses'=>'PengaduanController@getPdf','as'=>'pengaduan.pdf']);
     });
 	
     Route::any('/index',['uses' => 'PengaduanController@anyIndex','as'=>'pengaduan.index']);

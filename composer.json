@@ -5,7 +5,11 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"ignited/laravel-pdf": "1.*",
+		"h4cc/wkhtmltopdf-i386": "*",
+		"h4cc/wkhtmltopdf-amd64": "*",
+		"maxxscho/laravel-tcpdf": "0.*"
 	},
 	"autoload": {
 		"classmap": [

@@ -59,6 +59,11 @@ class Pengaduan extends Eloquent {
 		return asset('uploads/pengaduan/'.$this->gambar);
 	}
 
+	public function getImagePath()
+	{
+		return app_path().DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."pengaduan".DIRECTORY_SEPARATOR.$this->gambar;
+	}
+
 	public function saveImageFromBase64($base64_string){
 
 	    $data = explode(',', $base64_string);

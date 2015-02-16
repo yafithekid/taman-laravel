@@ -12,6 +12,11 @@
                 <h3>
                     <a href="#">{{$model->judul}}</a>
                 </h3>
+                @if (!Auth::guest())
+                <div>
+                    <a href='{{URL::route('pengaduan.pdf',['id'=>$model->id])}}' class='sub btn btn-success' target='_blank'>Cetak Laporan</a>
+                </div>
+                @endif
                 <div class="conf">
                 <p><div class="category"><i class="cat fa fa-bookmark"></i> {{$model->kategoriPengaduan->nama}}</a></div>
                 </p> 
