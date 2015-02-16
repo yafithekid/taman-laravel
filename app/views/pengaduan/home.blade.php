@@ -57,7 +57,7 @@
             <div class="conf">
                 <p><div class="category"><i class="cat fa fa-bookmark"></i>{{$model->kategori_pengaduan->nama}}</a></div></p>
             
-                <p><div class="statrep"><i class="star fa fa-star"></i>@if ($model->verified) Terverifikasi @else Belum diverifikasi @endif</div></a></p>
+                <p><div class="statrep"><i class="star fa fa-star"></i> {{$model->taman->nama}} </div></a></p>
             </div>
             <br />
             <p style='word-break: break-all'>{{substr(HTML::entities($model->konten),0,100) }}</p>

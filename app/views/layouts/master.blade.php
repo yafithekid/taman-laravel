@@ -66,7 +66,6 @@
 
     </div>
     <!-- /.container -->
-
     <!-- jQuery -->
     @section('script')
     <?=HTML::script("js/jquery.js");?>
@@ -78,6 +77,29 @@
     <!-- Bootstrap Core JavaScript -->
     <?=HTML::script("js/bootstrap.min.js");?>
     @show
+    @if (Session::has('notification'))
+    <!--modal-->
+    <div class="modal fade" id='notification'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Notifikasi</h4>
+          </div>
+          <div class="modal-body">
+            <p>{{Session::pull('notification')}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="sub btn btn-success" data-dismiss="modal">OK</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+    <script type="text/javascript">
+        $('#notification').modal();
+    </script>
+    @endif
+    <!--end of modal-->
 </body>
 
 </html>

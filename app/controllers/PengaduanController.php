@@ -4,7 +4,8 @@ class PengaduanController extends BaseController {
 
 	public function getHome()
 	{
-		$models = Pengaduan::orderBy('tanggal','DESC')->paginate(6);
+		$models = Pengaduan::where('verified','=','1')->orderBy('tanggal','DESC')->paginate(6);
+		
 		return View::make('pengaduan.home',['models' => $models]);
 	}
 
@@ -24,7 +25,9 @@ class PengaduanController extends BaseController {
 				$model->file_gambar = Input::file('file_gambar');
 				$model->saveImage();
 			}
-			return Redirect::route('pengaduan.view',['id'=>$model->id]);
+			Session::flash('notification','Laporan berhasil disimpan dan menunggu verifikasi');
+			return Redirect::back();
+			//return Redirect::route('pengaduan.view',['id'=>$model->id]);
 		} else {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
@@ -45,7 +48,8 @@ class PengaduanController extends BaseController {
 	public function anyDelete($id)
 	{
 		$model = Pengaduan::findOrFail($id);
-		$model->delete();
+		if ($model->delete())
+			Session::flash('notification','Data berhasil dihapus');
 		return Redirect::back();
 	}
 
@@ -54,7 +58,8 @@ class PengaduanController extends BaseController {
 		$model = Pengaduan::findOrFail($id);
 		if ($verified == 0 || $verified == 1){
 			$model->verified = $verified;
-			$model->save();
+			if($model->save())
+				Session::flash('notification','Status verifikasi berhasil diubah');
 		}
 		
 		return Redirect::back();

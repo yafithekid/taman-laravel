@@ -33,6 +33,10 @@ class Pengaduan extends Eloquent {
 		'konten' => 'required | max:1000'
 	];
 
+	public function taman(){
+		return $this->belongsTo('Taman','id_taman','id');
+	}
+	
 	public function penanganan(){
 		return $this->hasMany('Penanganan','id_pengaduan','id');
 	}

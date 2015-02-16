@@ -32,7 +32,7 @@
             <a href="{{URL::route('pengaduan.view',['id'=>$model->id])}}">{{$model->judul}}</a>
         </h3>
         <div class="conf">
-        <p><div class="category"><i class="cat fa fa-bookmark"></i> {{$model->kategori_pengaduan->nama}}</a></div>
+        <p><div class="category"><i class="cat fa fa-bookmark"></i>{{$model->taman->nama}} - {{$model->kategori_pengaduan->nama}}</a></div>
         </p>
         <p>
             

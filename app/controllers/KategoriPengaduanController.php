@@ -15,7 +15,8 @@ class KategoriPengaduanController extends BaseController {
         if ($validator->fails()){
             return View::make('kategori_pengaduan.create',['model'=>$model,'errors'=>$validator->messages()]);
         } else {
-            $model->save();
+            if ($model->save())
+                Session::flash('notification','Data berhasil ditambahkan');
             return Redirect::route('kategori_pengaduan.index');
         }
     }
@@ -34,7 +35,9 @@ class KategoriPengaduanController extends BaseController {
         if ($validator->fails()){
             return View::make('kategori_pengaduan.update',['model' => $model,'errors'=>$validator->messages()]);
         } else {
-            $model->save();
+            if($model->save()){
+                Session::flash('notification','Data berhasil diubah');
+            }
             return Redirect::route('kategori_pengaduan.index');
         }
     }
