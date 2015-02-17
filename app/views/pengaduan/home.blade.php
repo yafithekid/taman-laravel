@@ -45,7 +45,7 @@
 @foreach($models as $model)
 <div class='col-md-6'>
     <div class='col-md-11'>
-        <div class="row well wpost" style='min-height:470px;'>
+        <div class="row well wpost" style='min-height:520px;'>
             <p>{{$model->tanggal}}</p>
             <a href="{{URL::route('pengaduan.view',['id' => $model->id])}}">
                 <?= HTML::image($model->getImageUrl(),'',['width'=>260,'height'=>260]); ?>

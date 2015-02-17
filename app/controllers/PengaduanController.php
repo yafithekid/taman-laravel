@@ -108,6 +108,8 @@ class PengaduanController extends BaseController {
 		  $message->from('if3250.p1.kel1@gmail.com', 'Admin Tamanku');
 		  $message->to($user['email'], $user['name'])->subject('Pengaduan '.$model->judul);
 		});
+		Session::flash('notification','Email berhasil dikirimkan ke '.$model->email);
+		return Redirect::back();
 	}
 
 	public function getPdf($id)
